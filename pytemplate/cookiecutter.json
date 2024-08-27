@@ -1,0 +1,20 @@
+{
+    "project_name": null,
+    "__project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "__package_name": "{{ cookiecutter.project_name|lower|replace('.', '_')|replace(' ', '_') }}",
+    "project_description": null,
+    "include_bin": false,
+    "author_name": null,
+    "author_email": null,
+    "github_username": "",
+    "initial_version": "0.1.0",
+    "license": [
+        "MIT",
+        "unlicensed"
+    ],
+    "copyright_year": "{% now 'local', '%Y' %}-present",
+    "python_requirement": ">=3.10",
+    "_jinja2_env_vars": {
+        "line_statement_prefix": "#:"
+    }
+}
