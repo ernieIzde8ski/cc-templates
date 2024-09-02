@@ -16,6 +16,7 @@ class ArgumentParser(Tap):
         self.add_argument("left")
         self.add_argument("right")
 
+
 def run():
     """Run the CLI."""
     from {{ cookiecutter.__package_name }} import add
