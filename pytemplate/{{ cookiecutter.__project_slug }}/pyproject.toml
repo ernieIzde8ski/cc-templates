@@ -10,7 +10,7 @@ line_length = 90
 
 [tool.basedpyright]
 reportImplicitStringConcatenation = false
-reportUnknownMemberType = false
+pythonVersion = "{{ cookiecutter.initial_version }}"
 
 # packaging
 [build-system]
