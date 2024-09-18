@@ -13,7 +13,7 @@
         "unlicensed"
     ],
     "copyright_year": "{% now 'local', '%Y' %}-present",
-    "python_requirement": ">=3.10",
+    "python_requirement": "3.10",
     "_jinja2_env_vars": {
         "line_statement_prefix": "#:"
     }
