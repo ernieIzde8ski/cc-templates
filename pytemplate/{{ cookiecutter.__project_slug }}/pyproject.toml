@@ -19,7 +19,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "{{ cookiecutter.__project_slug }}"
-version = "{{ cookiecutter.initial_version }}"
 authors = [
     { name="{{ cookiecutter.author_name }}", email="{{ cookiecutter.author_email }}" }
 ]
@@ -31,7 +30,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dynamic = ["dependencies"]
+dynamic = ["dependencies", "version"]
 #: if cookiecutter.license != "unlicensed"
 license = { file = "LICENSE" }
 #: endif
@@ -47,6 +46,7 @@ Issues =  "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter
 
 [tool.setuptools.dynamic]
 dependencies = { file = "requirements.txt" }
+version = { attr = "{{ cookiecutter.__package_name }}.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
