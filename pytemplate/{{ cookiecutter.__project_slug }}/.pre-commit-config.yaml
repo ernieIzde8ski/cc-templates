@@ -23,5 +23,9 @@ repos:
         language: python
         "types_or": [python]
         require_serial: true
-        additional_dependencies: ["genanki", "pydantic", "black", "typer"]
+        #: if cookiecutter.include_bin
+        additional_dependencies: ["typer"]
+        #: else
+        additional_dependencies: []
+        #: endif
         minimum_pre_commit_version: "2.9.2"
