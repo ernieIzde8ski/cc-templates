@@ -35,7 +35,7 @@ dynamic = ["dependencies", "version"]
 license = { file = "LICENSE" }
 #: endif
 #: if cookiecutter.include_bin
-scripts = { "{{ cookiecutter.__project_slug }}" = "{{ cookiecutter.__package_name }}.argument_parser:run" }
+scripts = { "{{ cookiecutter.__project_slug }}" = "{{ cookiecutter.__package_name }}.app:app" }
 #: endif
 
 #: if cookiecutter.github_username != ""
