@@ -1,5 +1,5 @@
 #: if cookiecutter.include_bin
-from .argument_parser import run
+from .app import app
 
-run()
+app()
 #: endif
