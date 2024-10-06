@@ -1,12 +1,13 @@
 # dev tools
-[tool.black]
-line-length = 90
-target-version = ["py310", "py311", "py312"]
-skip-magic-trailing-comma = true
+[tool.ruff]
+line-length     = 90
+indent-width    = 4
+target-version  = "py312"
 
-[tool.isort]
-profile = "black"
-line_length = 90
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+skip-magic-trailing-comma = true
 
 [tool.basedpyright]
 reportImplicitStringConcatenation = false

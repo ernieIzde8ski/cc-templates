@@ -69,9 +69,13 @@ TEMPLATES = Templates(_template_directory)
 
 
 class cwd(AbstractContextManager["cwd"]):
-    def __init__(self, origin_path: Path, target_path: Path):
-        self.origin_path = origin_path
-        self.target_path = target_path
+    """
+    Update chdir to a target path while this context manager is open.
+    """
+
+    def __init__(self, target_path: Path):
+        self.origin_path = Path.cwd()
+        self.target_path = target_path.resolve()
 
     @override
     def __enter__(self) -> Self:  # pyright: ignore[reportMissingSuperCall]
@@ -85,10 +89,9 @@ class cwd(AbstractContextManager["cwd"]):
 
 @pytest.mark.parametrize("template", TEMPLATES.use("pytemplate"))
 def test_templates(template: Path, tmp_path: Path) -> None:
-    pwd = Path.cwd()
     print(tmp_path)
 
-    with cwd(pwd, tmp_path):
+    with cwd(tmp_path):
         extra_content: dict[str, Any] | None
         extra_context_path = template / "test_defaults.json"
 
