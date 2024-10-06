@@ -1,0 +1,17 @@
+[tool.ruff]
+line-length     = 90
+indent-width    = 4
+target-version  = "py312"
+
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+skip-magic-trailing-comma = true
+
+[tool.isort]
+profile = "black"
+line_length = 90
+
+[tool.basedpyright]
+reportImplicitStringConcatenation = false
+pythonVersion = "3.12"
