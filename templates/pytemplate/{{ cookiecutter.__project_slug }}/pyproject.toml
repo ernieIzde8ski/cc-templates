@@ -9,6 +9,10 @@ docstring-code-format = true
 line-ending = "lf"
 skip-magic-trailing-comma = true
 
+[tool.isort]
+profile = "black"
+line_length = 90
+
 [tool.basedpyright]
 reportImplicitStringConcatenation = false
 pythonVersion = "{{ cookiecutter.python_requirement }}"
