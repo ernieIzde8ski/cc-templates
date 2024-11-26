@@ -13,6 +13,11 @@ skip-magic-trailing-comma = true
 profile = "black"
 line_length = 90
 
+[tool.black]
+line-length = 90
+target-version = ["py312"]
+skip-magic-trailing-comma = true
+
 [tool.basedpyright]
 reportImplicitStringConcatenation = false
 pythonVersion = "{{ cookiecutter.python_requirement }}"
