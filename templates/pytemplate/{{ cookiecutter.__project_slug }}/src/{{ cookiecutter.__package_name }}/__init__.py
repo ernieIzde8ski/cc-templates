@@ -1,15 +1,27 @@
-""" {{ cookiecutter.project_description }} """
+"""{{ cookiecutter.project_description }}"""
 
-__author__ = "{{ cookiecutter.author_name }}"
-__copyright__ = "Copyright {{ cookiecutter.copyright_year }}, {{ cookiecutter.author_name }}"
-__credits__ = ["{{ cookiecutter.author_name }}"]
-#: if cookiecutter.license != "unlicensed"
-__license__ = "{{ cookiecutter.license }}"
-#: endif
-__version__ = "{{ cookiecutter.initial_version }}"
-__maintainer__ = "{{ cookiecutter.author_name }}"
+from .info import (
+    __author__,
+    __copyright__,
+    __credits__,
+    #: if cookiecutter.license != "unlicensed"
+    __license__,
+    #: endif
+    __maintainer__,
+    __version__,
+)
 
-__all__ = ["add"]
+__all__ = [
+    "__author__",
+    "__copyright__",
+    "__credits__",
+    #: if cookiecutter.license != "unlicensed"
+    "__license__",
+    #: endif
+    "__version__",
+    "__maintainer__",
+    "add",
+]
 
 
 def add(left: int, right: int) -> int:
