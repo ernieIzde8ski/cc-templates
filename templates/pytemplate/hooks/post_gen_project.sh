@@ -19,8 +19,9 @@ pip3 install -r requirements-dev.txt 1>/dev/null
 # `git rev-parse` checks if the current directory is a git repository
 if ! git rev-parse 1>/dev/null 2>/dev/null; then
     git init
-    python3 -m pre_commit autoupdate
-    python3 -m pre_commit install
+    command -v pre-commit || pipx install pre-commit
+    pre-commit autoupdate
+    pre-commit install
 else
     rm .pre-commit-config.yaml
 fi

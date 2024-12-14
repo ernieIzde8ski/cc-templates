@@ -6,14 +6,14 @@ from collections.abc import Callable, Iterator
 from contextlib import AbstractContextManager
 from functools import wraps
 from pathlib import Path
-from typing import Any, LiteralString, Self, override
+from typing import LiteralString, Self, final, override
 
 import pytest
 from cookiecutter.main import cookiecutter
 
 
 class RemovableList[T](list[T]):
-    def remove_by[U](self, func: Callable[[T], bool]) -> T:
+    def remove_by(self, func: Callable[[T], bool]) -> T:
         for n, item in enumerate(self):
             if func(item):
                 break
@@ -68,6 +68,7 @@ _template_directory = _root_directory / "templates"
 TEMPLATES = Templates(_template_directory)
 
 
+@final
 class cwd(AbstractContextManager["cwd"]):
     """
     Update chdir to a target path while this context manager is open.
@@ -83,16 +84,16 @@ class cwd(AbstractContextManager["cwd"]):
         return self
 
     @override
-    def __exit__(self, *args: Any) -> None:  # pyright: ignore[reportAny]
+    def __exit__(self, *args: object) -> None:
         os.chdir(self.origin_path)
 
 
-@pytest.mark.parametrize("template", TEMPLATES.use("pytemplate"))
+@pytest.mark.parametrize("template", TEMPLATES.use("pytemplate", "rstemplate"))
 def test_templates(template: Path, tmp_path: Path) -> None:
     print(tmp_path)
 
     with cwd(tmp_path):
-        extra_content: dict[str, Any] | None
+        extra_content: dict[str, object] | None
         extra_context_path = template / "test_defaults.json"
 
         if extra_context_path.exists():

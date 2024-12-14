@@ -1,0 +1,9 @@
+# cargo
+/target
+
+# editor settings
+.nvim.lua
+.nvimrc
+.exrc
+.vscode
+.idea

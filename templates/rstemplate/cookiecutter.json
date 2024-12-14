@@ -1,0 +1,13 @@
+{
+    "project_name": null,
+    "__project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "__package_name": "{{ cookiecutter.project_name|lower|replace(' ', '_')|replace('-','_')|replace('.', '_') }}",
+    "project_description": null,
+    "form": ["bin", "lib", "bin+lib"],
+    "license": ["MIT", "unlicensed"],
+    "copyright_year": "{% now 'local', '%Y' %}-present",
+    "author_name": null,
+    "_jinja2_env_vars": {
+        "line_statement_prefix": "#:"
+    }
+}
