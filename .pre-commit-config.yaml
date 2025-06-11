@@ -10,12 +10,12 @@ repos:
         args: ["--fix=lf"]
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.8
+    rev: v0.11.13
     hooks:
       - id: ruff-format
         exclude: "^templates/.*"
   - repo: https://github.com/PyCQA/isort
-    rev: "5.13.2"
+    rev: "6.0.1"
     hooks:
       - id: isort
         exclude: "^templates/.*"
