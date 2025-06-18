@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+#: if cookiecutter.packaging
 # Distribution / packaging
 .Python
 env/
@@ -21,6 +22,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+#: endif
 
 # dotenv
 .env
@@ -29,10 +31,6 @@ wheels/
 .venv
 venv/
 ENV/
-
-# mypy
-
-.mypy_cache/
 
 # editor settings
 .nvim.lua

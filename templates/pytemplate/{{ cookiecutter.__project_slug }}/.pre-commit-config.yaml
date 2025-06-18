@@ -22,7 +22,7 @@ repos:
     rev: ""
     hooks:
       - id: basedpyright
-        #: if cookiecutter.include_bin
+        #: if cookiecutter.module_type == "bin"
         additional_dependencies: ["typer>=0.15.1"]
         #: else
         additional_dependencies: []

@@ -1,3 +1,5 @@
 #: if cookiecutter.module_type == "bin"
-{{ cookiecutter.__typer }}
+from .app import app
+
+app()
 #: endif

@@ -1,0 +1,58 @@
+# Human-readable name
+display_name: null
+module_type: ["bin", "lib", "stub"]
+# local directory/PyPI name
+project_slug: "{{ cookiecutter.display_name | guess_pypi_name(cookiecutter.module_type) }}"
+__project_slug: "{{ cookiecutter.project_slug }}"
+# module name
+package_name: "{{ cookiecutter.project_slug|zap_suffix('.py')|replace('.', '') }}"
+project_description: null
+#############################
+
+### COPYRIGHT / LICENSING ###
+author_name: null
+author_email: null
+github_username: "{{ cookiecutter.author_name }}"
+copyright_year: "{% now 'local', '%Y' %}"
+license: # TODO: Add LiLiQ support
+  - "MIT"
+  - "unlicensed"
+#############################
+
+#### VERSIONING/TOOLING #####
+initial_version: "0.1.0"
+py_req: "3.10"
+__ruff_target: "py{{ cookiecutter.py_req | replace('.', '') }}"
+packaging: true
+#############################
+
+########## PROMPTS ##########
+__prompts__:
+  display_name: "Project Display Name"
+  module_type:
+    __prompt__: "Project Types:"
+    bin: Executable
+    lib: Library
+    stub: Type Stubs
+  project_slug: PyPI Name
+  package_name: Module Name
+  project_desription: Module Description
+  author_name: Author Name/Alias
+  author_email: Author Email
+  github_username: GitHub Username
+  license:
+    __prompt__: "Copyright Notice:"
+    MIT: MIT License (Permissive)
+    unlicensed: All Rights Reserved
+  initial_version: Initial Version
+  py_req: "Minimum required Python version"
+  packaging: Include packaging & redistribution configs?
+#############################
+
+##### JINJA ENVIRONMENT #####
+__typer: "typer>=0.16.0"
+_extensions:
+  - local_extensions.SimpleFilters
+_jinja2_env_vars:
+  line_statement_prefix: "#:"
+#############################

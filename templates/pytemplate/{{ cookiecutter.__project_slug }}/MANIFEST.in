@@ -1,2 +1,4 @@
+#: if cookiecutter.packaging
 include src/*/py.typed
 include requirements.txt
+#: endif

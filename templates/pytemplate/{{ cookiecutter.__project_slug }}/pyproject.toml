@@ -2,7 +2,7 @@
 [tool.ruff]
 line-length     = 90
 indent-width    = 4
-target-version  = "py312"
+target-version  = "{{ cookiecutter.__ruff_target }}"
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -15,12 +15,12 @@ line_length = 90
 
 [tool.black]
 line-length = 90
-target-version = ["py312"]
+target-version = ["{{ cookiecutter.__ruff_target }}"]
 skip-magic-trailing-comma = true
 
 [tool.basedpyright]
 reportImplicitStringConcatenation = false
-pythonVersion = "{{ cookiecutter.python_requirement }}"
+pythonVersion = "{{ cookiecutter.py_req }}"
 
 # packaging
 [build-system]
@@ -34,7 +34,7 @@ authors = [
 ]
 description = "{{ cookiecutter.project_description }}"
 readme = { file = "README.md", content-type="text/markdown" }
-requires-python = ">={{ cookiecutter.python_requirement }}"
+requires-python = ">={{ cookiecutter.py_req }}"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -44,8 +44,8 @@ dynamic = ["dependencies", "version"]
 #: if cookiecutter.license != "unlicensed"
 license = { file = "LICENSE" }
 #: endif
-#: if cookiecutter.include_bin
-scripts = { "{{ cookiecutter.__project_slug }}" = "{{ cookiecutter.__package_name }}.app:app" }
+#: if cookiecutter.module_type == "bin"
+scripts = { "{{ cookiecutter.__project_slug }}" = "{{ cookiecutter.package_name }}.app:app" }
 #: endif
 
 #: if cookiecutter.github_username != ""
@@ -56,7 +56,7 @@ Issues =  "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter
 
 [tool.setuptools.dynamic]
 dependencies = { file = "requirements.txt" }
-version = { attr = "{{ cookiecutter.__package_name }}.info.__version__" }
+version = { attr = "{{ cookiecutter.package_name }}.info.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
