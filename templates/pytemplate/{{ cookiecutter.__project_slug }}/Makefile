@@ -1,3 +1,4 @@
+#: if cookiecutter.packaging
 .PHONY: default clean dist
 
 default:
@@ -9,3 +10,4 @@ clean:
 dist:
 	python -m build
 	source .env 2>/dev/null || :; twine upload 'dist/*'
+#: endif

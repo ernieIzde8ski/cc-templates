@@ -1,8 +1,7 @@
 import re
 from collections.abc import Callable
-from typing import ClassVar, Literal
+from typing import ClassVar, Literal, final
 
-from cookiecutter.utils import simple_filter
 from jinja2 import Environment
 from jinja2.ext import Extension
 
@@ -19,10 +18,19 @@ class FunctionRegistry[Fn: Callable[..., object]](dict[str, Fn]):
 type FilterRegistry = FunctionRegistry[Callable[..., object]]
 
 
+@final
 class SimpleFilters(Extension):
     type Fn = Callable[..., object]
     _simple_filters: ClassVar[FilterRegistry] = FunctionRegistry()
     filter = _simple_filters.register
+
+    ########################
+    ########################
+
+    def __init__(self, environment: Environment):
+        super().__init__(environment)
+        for name, func in self._simple_filters.items():
+            _ = environment.filters.setdefault(name, func)
 
     ########################
     ########################
@@ -68,11 +76,19 @@ class SimpleFilters(Extension):
     def zap_suffix(__s: str, suffix: str):
         return __s.removesuffix(suffix)
 
-
-    ########################
-    ########################
-
-    def __init__(self, environment: Environment):
-        super().__init__(environment)
-        for name, func in self._simple_filters.items():
-            _ = environment.filters.setdefault(name, func)
+    @filter
+    @staticmethod
+    def name_mod_type(mod_type: ModuleKind, plural: bool = False):
+        match (mod_type, plural):
+            case ("bin", False):
+                return "binary"
+            case ("bin", True):
+                return "binaries"
+            case ("lib", False):
+                return "library"
+            case ("lib", True):
+                return "libraries"
+            case ("stub", False):
+                return "stub"
+            case ("stub", True):
+                return "stubs"

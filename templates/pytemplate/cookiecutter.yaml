@@ -1,6 +1,7 @@
 # Human-readable name
 display_name: null
 module_type: ["bin", "lib", "stub"]
+__module_type_name: "{{ cookiecutter.module_type | name_mod_type }}"
 # local directory/PyPI name
 project_slug: "{{ cookiecutter.display_name | guess_pypi_name(cookiecutter.module_type) }}"
 __project_slug: "{{ cookiecutter.project_slug }}"

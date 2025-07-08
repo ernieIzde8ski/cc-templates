@@ -8,8 +8,10 @@ insert_final_newline = true
 charset = utf-8
 end_of_line = lf
 
+#:  if cookiecutter.packaging
 [Makefile]
 indent_style = tab
+#:  endif
 
-[*.yaml]
+[*.{md,yaml}]
 indent_size = 2
